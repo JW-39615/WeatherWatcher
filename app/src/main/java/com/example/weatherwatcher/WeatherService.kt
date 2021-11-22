@@ -8,11 +8,10 @@ private const val API_KEY = ""
 
 interface WeatherService {
 
-    @GET( "weather?lat={lat}&lon={lon}&appid{key}")
+    @GET("weather?lat={lat}&lon={lon}&appid=$API_KEY")
     fun getCurrentWeatherByCoordinates(
         @Path("lat") lat: Float,
-        @Path("lon") lon: Float,
-        @Path("key") API_KEY: String
+        @Path("lon") lon: Float
     ): Call<WeatherData>
 
     @GET( "")
