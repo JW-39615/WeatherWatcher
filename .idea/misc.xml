@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Projekty/WeatherWatcher/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.4041666666666667" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2359375" />
+        <entry key="app/src/main/res/drawable/rounded_edges.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.264945652173913" />
       </map>
     </option>
