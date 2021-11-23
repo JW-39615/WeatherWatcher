@@ -1,4 +1,4 @@
-package com.example.weatherwatcher
+package com.example.weatherwatcher.data
 
 data class Main(
     val temp: Float,

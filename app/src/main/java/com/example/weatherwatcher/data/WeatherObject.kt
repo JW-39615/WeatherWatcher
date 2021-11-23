@@ -1,6 +1,6 @@
-package com.example.weatherwatcher
+package com.example.weatherwatcher.data
 
-data class Weather(
+data class WeatherObject(
     val id: Int,
     val main: String,
     val description: String,
