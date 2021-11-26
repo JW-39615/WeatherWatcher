@@ -1,5 +1,5 @@
 package com.example.weatherwatcher.data
 
-data class WeatherData(
+data class WeatherDataList(
     val list: List<WeatherList>
 )
