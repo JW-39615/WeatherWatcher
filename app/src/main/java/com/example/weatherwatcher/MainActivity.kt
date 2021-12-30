@@ -11,7 +11,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val API_KEY = "f8186d62efc31be127a6ceac93dcc24c"
+//Insert your api key
+private val API_KEY = ""
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
