@@ -11,7 +11,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 private const val API_KEY = "f8186d62efc31be127a6ceac93dcc24c"
 private const val TAG = "MainActivity"
 
@@ -20,30 +19,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val gson = GsonBuilder().create()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-        val weatherService = retrofit.create(WeatherService::class.java)
+        loadWeather()
+    }
 
-        weatherService.getCurrentWeatherByCityName("Lubin", API_KEY).enqueue(object: Callback<WeatherList> {
-            override fun onResponse(
-                call: Call<WeatherList>,
-                response: Response<WeatherList>
-            ) {
-                Log.i(TAG, "onResponse $response")
-                val weatherData = response.body()
-                if (weatherData == null) {
-                    Log.w(TAG, "Invalid body response")
-                    return
+    private fun loadWeather() {
+        val destinationService = ServiceBuilder.buildService(WeatherService::class.java)
+        //TODO: Get location from search bar
+        val requestCall = destinationService.getCurrentWeatherByCityName("Legnica", API_KEY)
+
+        requestCall.enqueue(object : Callback<WeatherList>{
+            override fun onResponse(call: Call<WeatherList>, response: Response<WeatherList>) {
+                Log.d(TAG, "onResponse: ${response.body()}")
+                if (response.isSuccessful){
+                    val  weather = response.body()!!
+                    Log.d(TAG, "Weather: ${weather}")
                 }
             }
 
             override fun onFailure(call: Call<WeatherList>, t: Throwable) {
-                Log.e(TAG, "onFailure $t")
+                Log.d(TAG, "Something went wrong")
             }
-
         })
     }
 }

@@ -6,8 +6,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val API_KEY = "f8186d62efc31be127a6ceac93dcc24c"
-
 interface WeatherService {
 
     @GET("weather")
@@ -26,14 +24,16 @@ interface WeatherService {
 
     // 5 Days, 3 hour forecast data
 
-    @GET( "forecast?q={cityName}&appid=$API_KEY")
+    @GET( "forecast")
     fun getForecastByCityName(
-        @Query("cityName") cityName: String
+        @Query("cityName") cityName: String,
+        @Query("appid") API_KEY: String
     ): Call<WeatherDataList>
 
-    @GET("forecast?lat={lat}&lon={lon}&appid=$API_KEY")
+    @GET("forecast")
     fun getForecastByCoordinates(
         @Query("lat") lat: Float,
-        @Query("lon") lon: Float
+        @Query("lon") lon: Float,
+        @Query("appid") API_KEY: String
     ): Call<WeatherDataList>
 }

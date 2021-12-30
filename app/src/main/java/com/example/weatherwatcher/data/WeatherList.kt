@@ -1,6 +1,7 @@
 package com.example.weatherwatcher.data
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class WeatherList(
     @SerializedName("dt")
@@ -13,7 +14,7 @@ data class WeatherList(
     val weather: List<WeatherObject>,
 
     @SerializedName("dt_txt")
-    val dt_txt: String,
+    val dt_txt: Date,
 
     @SerializedName("clouds")
     val clouds: Clouds,
